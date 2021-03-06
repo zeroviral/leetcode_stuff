@@ -21,3 +21,4 @@ class Solution:
                     dfs(grid, i, j, m, n)
         
         return count
+            
