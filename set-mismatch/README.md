@@ -1,3 +1,4 @@
+[Discussion Post (created on 10/2/2021 at 21:27)](https://leetcode.com/problems/set-mismatch/solution/)  
 <h2>645. Set Mismatch</h2><h3>Easy</h3><hr><div><p>You have a set of integers <code>s</code>, which originally contains all the numbers from <code>1</code> to <code>n</code>. Unfortunately, due to some error, one of the numbers in <code>s</code> got duplicated to another number in the set, which results in <strong>repetition of one</strong> number and <strong>loss of another</strong> number.</p>
 
 <p>You are given an integer array <code>nums</code> representing the data status of this set after the error.</p>
