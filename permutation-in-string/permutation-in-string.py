@@ -14,12 +14,9 @@ class Solution:
             while r - l + 1 > len(s1):
                 if s2[l] in lookup:
                     lookup[s2[l]] += 1
-                
                     if lookup[s2[l]] > 0:
                         count -= 1
                 l += 1
-            
             if count == len(s1):
                 return True
-            
         return False
