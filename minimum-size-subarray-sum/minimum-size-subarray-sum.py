@@ -4,13 +4,11 @@ class Solution:
         minLength = float('inf')
         currSize = 0
         
-        r = 0
-        
-        for i in range(len(nums)):
-            currSize += nums[i]
+        for r in range(len(nums)):
+            currSize += nums[r]
         
             while currSize >= target:
-                minLength = min(i - l + 1, minLength)
+                minLength = min(minLength, r - l + 1)
                 currSize -= nums[l]
                 l += 1
         return minLength if minLength != float('inf') else 0
