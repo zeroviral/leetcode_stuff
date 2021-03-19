@@ -3,13 +3,13 @@ class Solution:
         l = maxLength = count = 0
         
         for r in range(len(A)):
-            
             if A[r] == 0:
                 count += 1
-                
-            while l <= r and count > K:
+            
+            while count > K:
                 if A[l] == 0:
                     count -= 1
                 l += 1
             maxLength = max(maxLength, r - l + 1)
         return maxLength
+            
