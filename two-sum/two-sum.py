@@ -6,7 +6,5 @@ class Solution:
         for i, element in enumerate(nums):
             
             if target - element in lookup:
-                return [lookup[target - element], i]
-            else:
-                lookup[element] = i
-        
+                return [i, lookup[target - element]]
+            lookup[element] = i
