@@ -6,11 +6,10 @@ class Solution:
             
             if A[r] == 0:
                 count += 1
-            
+                
             while l <= r and count > K:
                 if A[l] == 0:
                     count -= 1
                 l += 1
             maxLength = max(maxLength, r - l + 1)
-        
         return maxLength
