@@ -2,15 +2,20 @@ from collections import deque
 
 class Solution:
     def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
-        seen = [False] * len(rooms)
-        seen[0] = True
-        stack = [0]
         
-        while stack:
-            room = stack.pop()
+        visited = [0 for i in range(1001)]
+        
+        def dfs(rooms, room, visited):
+            visited[room] = 1
+            
             for key in rooms[room]:
-                if not seen[key]:
-                    seen[key] = True
-                    stack.append(key)
-        return all(seen)
+                if visited[key] == 0:
+                    dfs(rooms, key, visited)
+                
+        dfs(rooms, 0, visited)
+        for i in range(len(rooms)):
+            if visited[i] == 0:
+                return False
+            
+        return True
                 
