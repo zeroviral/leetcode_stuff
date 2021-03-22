@@ -12,13 +12,14 @@ class Solution:
             if not root:
                 return
             
-            self.ans.append(root.val)
             dfs(root.left)
+            ans.append(root.val)
             dfs(root.right)
-            
-        self.ans = []
+        
+        ans = []
         dfs(root1)
         dfs(root2)
+        ans.sort()
         
-        return sorted(self.ans)
+        return ans
         
