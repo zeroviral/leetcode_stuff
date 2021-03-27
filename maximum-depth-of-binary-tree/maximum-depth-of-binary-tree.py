@@ -9,20 +9,16 @@ class Solution:
         
         self.maxDepth = 0
         
-        
         def dfs(root, currDepth=0):
-            
             if not root:
-                return 0
+                return
             
-            currDepth +=1
-            self.maxDepth = max(currDepth, self.maxDepth)
+            currDepth += 1
+            self.maxDepth = max(self.maxDepth, currDepth)
             dfs(root.left, currDepth)
             dfs(root.right, currDepth)
-            
-            return currDepth
         
         dfs(root)
-        
         return self.maxDepth
+            
         
