@@ -1,12 +1,12 @@
 class Solution:
     def findAnagrams(self, s: str, p: str) -> List[int]:
         l = 0
-        count = 0
         lookup = Counter(p)
+        count = 0
         ans = []
         
-        
         for r in range(len(s)):
+            
             if s[r] in lookup:
                 if lookup[s[r]] > 0:
                     count += 1
