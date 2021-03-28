@@ -16,19 +16,23 @@ class Solution:
         
         q = deque()
         q.append(root)
-        returnList = []
+        ans = []
         
         while q:
+            target = len(q) - 1
             for i in range(len(q)):
+                
                 node = q.popleft()
+                if i == target:
+                    ans.append(node.val)
+                
                 if node.left:
                     q.append(node.left)
                 if node.right:
                     q.append(node.right)
             
-            # Here we simply add the final node value that was popped once outside the for loop
-            returnList.append(node.val)
+            
         
-        return returnList
+        return ans
         
         
