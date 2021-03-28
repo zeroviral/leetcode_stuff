@@ -1,32 +1,20 @@
 class Solution:
     def backspaceCompare(self, S: str, T: str) -> bool:
         
-        stack = []
-        finalT = ""
-        finalS = ""
+        stack1, stack2 = [], []
+        
         
         for element in S:
             if element == "#":
-                if stack:
-                    stack.pop()
+                if stack1: stack1.pop()
             else:
-                stack.append(element)
-                
-        
-        finalS = "".join(stack)
-        
-        stack = []
+                stack1.append(element)
         
         for element in T:
             if element == "#":
-                if stack:
-                    stack.pop()
+                if stack2: stack2.pop()
             else:
-                stack.append(element)
-            
-        finalT = "".join(stack)
-        print(finalS, finalT)
+                stack2.append(element)
         
-        
-        return finalS == finalT
+        return stack1 == stack2
                 
