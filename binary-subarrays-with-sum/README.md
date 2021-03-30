@@ -1,3 +1,4 @@
+[Discussion Post (created on 30/2/2021 at 19:28)](https://leetcode.com/problems/binary-subarrays-with-sum/submissions/)  
 <h2>930. Binary Subarrays With Sum</h2><h3>Medium</h3><hr><div><p>In an array <code>A</code> of <code>0</code>s and <code>1</code>s, how many <strong>non-empty</strong> subarrays have sum <code>S</code>?</p>
 
 <p>&nbsp;</p>
