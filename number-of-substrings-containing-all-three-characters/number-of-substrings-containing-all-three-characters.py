@@ -2,7 +2,6 @@ from collections import defaultdict
 class Solution:
     def numberOfSubstrings(self, s: str) -> int:
         l = 0
-        count = 0
         lookup = defaultdict(int)
         ans = 0
         
