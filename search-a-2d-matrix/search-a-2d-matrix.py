@@ -7,6 +7,7 @@ class Solution:
         r = rows
         
         while l < r:
+            
             mid = (l + r) // 2
             
             if matrix[mid][0] == target:
@@ -14,10 +15,8 @@ class Solution:
             
             elif matrix[mid][0] > target:
                 r = mid
-            
             else:
                 l = mid + 1
-        
         
         targetRow = l - 1
         
@@ -33,7 +32,6 @@ class Solution:
             
             elif matrix[targetRow][mid] > target:
                 r = mid
-                
             else:
                 l = mid + 1
         
