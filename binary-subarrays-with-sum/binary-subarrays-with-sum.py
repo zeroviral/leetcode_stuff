@@ -7,16 +7,16 @@ class Solution:
         
         for r in range(len(A)):
             
-            count += A[r]
+            currSum += A[r]
             
             if A[r] == 1:
-                currSum = 0
+                count = 0
             
-            while l <= r and count >= S:
-                if count == S:
-                    currSum += 1
+            while l <= r and currSum >= S:
+                if currSum == S:
+                    count += 1
                 
-                count -= A[l]
+                currSum -= A[l]
                 l += 1
-            ans += currSum
+            ans += count
         return ans
