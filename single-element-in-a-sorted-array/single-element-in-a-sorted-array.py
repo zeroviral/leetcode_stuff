@@ -1,6 +1,10 @@
 class Solution:
     def singleNonDuplicate(self, nums: List[int]) -> int:
-        x = 0
-        for num in nums:
-            x ^= num
-        return x
+        l, r = 0, len(nums) - 1
+        while l < r:
+            mid = (l + r) // 2
+            if nums[mid] == nums[mid ^ 1]:
+                l = mid + 1
+            else:
+                r = mid
+        return nums[l]
