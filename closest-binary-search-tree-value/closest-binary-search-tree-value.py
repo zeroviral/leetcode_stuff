@@ -7,20 +7,18 @@
 class Solution:
     def closestValue(self, root: TreeNode, target: float) -> int:
         
-        self.minVal = float('inf')
-        self.topDiff = float('inf')
+        self.smallest = math.inf
+        self.ans = 0
         
         def dfs(root):
-            
-            if not root:
-                return 
-            
-            if abs(target - root.val) < self.topDiff:
-                self.topDiff = abs(target - root.val)
-                self.minVal = root.val
-            dfs(root.left)
-            dfs(root.right)
-            
+            if root:
+                
+                if abs(root.val - target) < self.smallest:
+                    self.smallest = abs(root.val - target)
+                    self.ans = root.val
+                dfs(root.left)
+                dfs(root.right)
         dfs(root)
+        return self.ans
         
-        return self.minVal
+        
