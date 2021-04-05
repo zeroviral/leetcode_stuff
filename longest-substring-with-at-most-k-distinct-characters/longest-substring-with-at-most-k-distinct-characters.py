@@ -1,22 +1,24 @@
 from collections import defaultdict
 
 class Solution:
-    def lengthOfLongestSubstringKDistinct(self, s: str, k: int) -> int:  
+    def lengthOfLongestSubstringKDistinct(self, s: str, k: int) -> int:
+        lookup = defaultdict(int)
         l = 0
         maxLength = 0
-        types = 0
-        seen = defaultdict(int)
+        count = 0
         
         for r in range(len(s)):
-            if s[r] not in seen or seen[s[r]] == 0:
-                types += 1
-            seen[s[r]] += 1
+            if s[r] not in lookup or lookup[s[r]] == 0:
+                count += 1
+            lookup[s[r]] += 1
             
-            while l <= r and types > k:
-                seen[s[l]] -= 1
-                if seen[s[l]] == 0:
-                    types -= 1
+            while l <= r and count > k:
+                lookup[s[l]] -= 1
+                if lookup[s[l]] == 0:
+                    count -= 1
                 l += 1
-            maxLength = max(maxLength, len(s[l:r + 1]))
+            
+            
+            maxLength = max(maxLength, r - l + 1)
+        
         return maxLength
-                
