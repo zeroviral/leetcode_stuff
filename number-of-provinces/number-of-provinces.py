@@ -2,11 +2,10 @@ class Solution:
     def findCircleNum(self, A):
         seen = set()
         def dfs(node):
-            for nei, adj in enumerate(A[node]):
-                print(f'nei is now: {nei}')
-                if adj and nei not in seen:
-                    seen.add(nei)
-                    dfs(nei)
+            for curr, nxt in enumerate(A[node]):
+                if nxt and curr not in seen:
+                    seen.add(curr)
+                    dfs(curr)
 
         ans = 0
         for i in range(len(A)):
