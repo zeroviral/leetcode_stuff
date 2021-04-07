@@ -7,15 +7,15 @@
 class Solution:
     def sortedArrayToBST(self, nums: List[int]) -> TreeNode:
         
-        def construct(l, r):
+        def make(l, r):
             if l > r:
                 return None
             
             mid = (l + r) // 2
             
             root = TreeNode(nums[mid])
-            root.left = construct(l, mid - 1)
-            root.right = construct(mid + 1, r)
+            root.left = make(l, mid - 1)
+            root.right = make(mid + 1, r)
             return root
         
-        return construct(0, len(nums) - 1)
+        return make(0, len(nums) - 1)
