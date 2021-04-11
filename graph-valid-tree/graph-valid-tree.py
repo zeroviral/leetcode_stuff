@@ -9,16 +9,14 @@ class Solution:
             lookup[neighbor].append(node)
         
         stack.append(0)
-        parent = {0 : -1}
-        
+        parent = {0 : 0}
         while stack:
             node = stack.pop()
             for neighbor in lookup[node]:
-                if neighbor == parent[node]:
-                    continue
-                if neighbor in parent:
-                    return False
-                parent[neighbor] = node
-                stack.append(neighbor)
+                if neighbor != parent[node]:
+                    if neighbor in parent:
+                        return False
+                    parent[neighbor] = node
+                    stack.append(neighbor)
         
         return len(parent) == n
