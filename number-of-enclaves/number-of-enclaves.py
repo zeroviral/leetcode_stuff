@@ -19,6 +19,5 @@ class Solution:
         
         for row in range(rows):
             for col in range(cols):
-                if A[row][col] == 1:
-                    enclaves += 1
+                enclaves += A[row][col]
         return enclaves
