@@ -5,7 +5,11 @@ class Solution:
         components = len(isConnected)
         
         def find(node):
-            return node if node == parents[node] else find(parents[node])
+            if node == parents[node]:
+                return node
+            else:
+                parents[node] = find(parents[node])
+                return parents[node]
         
         def union(start, end):
             
@@ -14,7 +18,7 @@ class Solution:
             if sParent == eParent:
                 return False
                 
-            if parents[sParent] >= parents[eParent]:
+            if priority[sParent] >= priority[eParent]:
                 parents[eParent] = parents[sParent]
                 priority[sParent] += 1
             else:
