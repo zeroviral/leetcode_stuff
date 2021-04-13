@@ -7,7 +7,7 @@ class Solution:
         r = 1
         
         while r < len(nums):
-            if nums[l] == nums[r] and nums[l] == 0:
+            if nums[r] == nums[l] == 0:
                 r += 1
                 continue
             if nums[l] == 0 and nums[r] != 0:
