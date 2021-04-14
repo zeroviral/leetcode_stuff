@@ -1,18 +1,12 @@
 class Solution:
     def maxFreq(self, s: str, maxLetters: int, minSize: int, maxSize: int) -> int:
-        # If it meets all conditions, add one to the value of that substring in dictionary
-        # keep iterating and 
-        l = 0
-        lookup = collections.defaultdict(int)
-        letters = collections.defaultdict(int)
-        count = 0
-        maxCount = 0
+        l, count, maxCount = 0, 0, 0
+        lookup, letters = collections.defaultdict(int), collections.defaultdict(int)
         
         for r in range(len(s)):
             if letters[s[r]] < 1:
                 count += 1
             letters[s[r]] += 1
-            
             
             while r - l + 1 > minSize:
                 letters[s[l]] -= 1
