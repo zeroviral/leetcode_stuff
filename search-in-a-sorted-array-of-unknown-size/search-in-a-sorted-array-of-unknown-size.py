@@ -17,7 +17,7 @@ class Solution:
         
         while reader.get(r) < target:
             l = r
-            r *= 2
+            r <<= 2
         
         
         while l <= r:
