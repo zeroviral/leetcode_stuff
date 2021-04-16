@@ -11,4 +11,3 @@ class Solution:
                 else:
                     heapq.heappush(minHeap, (-currSum, ([nums1[i], nums2[j]])))
         return [[num1, num2] for (currSum, (num1, num2)) in minHeap]
-                    
