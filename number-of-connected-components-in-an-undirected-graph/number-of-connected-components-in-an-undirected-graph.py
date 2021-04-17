@@ -14,7 +14,6 @@ class Solution:
                 if neighbor not in seen:
                     dfs(neighbor)
         
-        
         for node in range(n):
             if node not in seen:
                 components += 1
