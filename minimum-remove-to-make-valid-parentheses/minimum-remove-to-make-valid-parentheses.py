@@ -18,11 +18,8 @@ class Solution:
                 continue
             if c == "(":
                 stack.append(i)
-            elif c == ")" and not stack:
+            elif not stack and c == ")":
                 removals.add(i)
             else:
                 stack.pop()
-        removals = removals.union(set(stack))
-        return "".join([c for i, c in enumerate(s) if i not in removals])
-        
-        
+        return "".join([c for i, c in enumerate(s) if i not in removals.union(set(stack))])
