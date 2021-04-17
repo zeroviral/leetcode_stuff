@@ -1,33 +1,24 @@
 class Solution:
     def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:
-        if not edges:
-            return []
+        parents = [i for i in range(len(edges) + 1)]
+        priority = [0] * (len(edges) + 1)
         
-        def dfs(start, end):
-            stack = [start]
-            seen = set()
+        def find(node):
+            return parents[node] if parents[node] == node else find(parents[node])
+        
+        def union(start, end):
+            p1, p2 = find(start), find(end)
+            if p1 == p2:
+                return False
             
-            while stack:
-                node = stack.pop()
-                if node == end:
-                    return True
-                seen.add(node)
-                
-                for neighbor in graph[node]:
-                    if neighbor not in seen:
-                        stack.append(neighbor)
-            return False
-        
-        graph = collections.defaultdict(list)
-        doubles = []
-        
-        for start, end in edges:
-            if start in graph and end in graph:
-                if dfs(start, end):
-                    doubles.append(start)
-                    doubles.append(end)
-            graph[start].append(end)
-            graph[end].append(start)
-        
-        return doubles
-            
+            if priority[p1] >= priority[p2]:
+                parents[p2] = parents[p1]
+                priority[p1] += 1
+            else:
+                parents[p1] = parents[p2]
+                priority[p2] += 1
+            return True
+
+        for edge in edges:
+            if not union(*edge):
+                return edge
