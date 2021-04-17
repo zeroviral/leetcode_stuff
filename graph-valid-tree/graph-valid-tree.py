@@ -1,22 +1,27 @@
 class Solution:
     def validTree(self, n: int, edges: List[List[int]]) -> bool:
-        lookup = collections.defaultdict(list)
-        stack = []
-        seen = set()
-               
-        for node, neighbor in edges:
-            lookup[node].append(neighbor)
-            lookup[neighbor].append(node)
+        parents = [i for i in range(n)]
+        priority = [0] * n
         
-        stack.append(0)
-        parent = {0 : 0}
-        while stack:
-            node = stack.pop()
-            for neighbor in lookup[node]:
-                if neighbor != parent[node]:
-                    if neighbor in parent:
-                        return False
-                    parent[neighbor] = node
-                    stack.append(neighbor)
+        def find(node):
+            return node if node == parents[node] else find(parents[node])
         
-        return len(parent) == n
+        def union(start, end):
+            sParent = parents[start]
+            eParent = parents[end]
+            if sParent == eParent:
+                return False
+            if priority[sParent] >= priority[eParent]:
+                parents[eParent] = parents[sParent]
+                priority[sParent] += 1
+            else:
+                parents[sParent] = parents[eParent]
+                priority[eParent] += 1
+            return True
+        
+        if len(edges) != n - 1:
+            return False
+        for edge in edges:
+            if not union(*edge):
+                return False
+        return True
