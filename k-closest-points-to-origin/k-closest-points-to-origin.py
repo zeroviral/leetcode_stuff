@@ -1,12 +1,11 @@
 class Solution(object):
     def kClosest(self, points, K):
-        minHeap = []
+        maxHeap = []
         
         for x, y in points:
-            distance = -(x*x + y*y)
-            if len(minHeap) == K:
-                heapq.heappushpop(minHeap, (distance, (x,y)))
+            dist = -(x*x + y*y)
+            if len(maxHeap) == K:
+                heapq.heappushpop(maxHeap, (dist, (x, y)))
             else:
-                heapq.heappush(minHeap, (distance, (x,y)))
-        
-        return [(x, y) for (distance, (x,y)) in minHeap]
+                heapq.heappush(maxHeap, (dist, (x, y)))
+        return [(x, y) for (dist, (x,y)) in maxHeap]
