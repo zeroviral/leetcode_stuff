@@ -6,9 +6,4 @@ class Solution:
             2.1. While the len(heap) > k, we will heappop() our heap, which removes smallest element.
         3. Return the heap.
         '''
-        
-        heap = [(count, element) for element, count in Counter(nums).items()]
-        heapq.heapify(heap)
-        while len(heap) > k:
-            heapq.heappop(heap)
-        return [element for (count, element) in heap]
+        return heapq.nlargest(k, Counter(nums).keys(), Counter(nums).get)
