@@ -1,3 +1,4 @@
+[Discussion Post (created on 18/3/2021 at 10:48)](https://leetcode.com/problems/maximum-number-of-occurrences-of-a-substring/submissions/)  
 <h2>1297. Maximum Number of Occurrences of a Substring</h2><h3>Medium</h3><hr><div><p>Given a string <code>s</code>, return the maximum number of ocurrences of <strong>any</strong> substring&nbsp;under the following rules:</p>
 
 <ul>
