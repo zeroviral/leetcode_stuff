@@ -22,4 +22,5 @@ class Solution:
                 removals.add(i)
             else:
                 stack.pop()
-        return "".join([c for i, c in enumerate(s) if i not in removals.union(set(stack))])
+        removals |= set(stack)
+        return "".join([c for i, c in enumerate(s) if i not in removals])
