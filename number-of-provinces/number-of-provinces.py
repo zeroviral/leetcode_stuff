@@ -5,13 +5,13 @@ class Solution:
         visited = set()
         
         def dfs(node):
-            for curr, neighbors in enumerate(isConnected[node]):
-                if neighbors and curr not in visited:
-                    visited.add(curr)
-                    dfs(curr)
+            for index, neighbor in enumerate(isConnected[node]):
+                if neighbor == 1 and index not in visited:
+                    visited.add(index)
+                    dfs(index)
         
-        for i in range(len(isConnected)):
-            if i not in visited:
+        for node in range(len(isConnected)):
+            if node not in visited:
                 provinces += 1
-                dfs(i)
+                dfs(node)
         return provinces
