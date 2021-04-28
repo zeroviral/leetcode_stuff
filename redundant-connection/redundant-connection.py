@@ -1,7 +1,7 @@
 class Solution:
     def findRedundantConnection(self, edges: List[List[int]]) -> List[int]:
         parents = [i for i in range(len(edges) + 1)]
-        pri = [0 for i in range(len(edges) + 1)]
+        pri = [0] * (len(edges) + 1)
         
         def find(node):
             return node if node == parents[node] else find(parents[node])
@@ -11,7 +11,7 @@ class Solution:
             
             if p1 == p2:
                 return False
-            if pri[p1] >= p2:
+            if parents[p1] >= parents[p2]:
                 parents[p2] = parents[p1]
                 pri[p1] += 1
             else:
@@ -22,4 +22,3 @@ class Solution:
         for edge in edges:
             if not union(*edge):
                 return [*edge]
-        
