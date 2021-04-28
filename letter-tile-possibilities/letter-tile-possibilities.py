@@ -19,12 +19,3 @@ class Solution:
 
         dfs('', 0)
         return len(seqs)
-    
-    '''
-    
-    Input: AAB
-    visited = [0, 1, 0]
-    
-    combos = (A, AA, AAB, AB)
-    seq = "A"
-    '''
