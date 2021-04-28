@@ -5,7 +5,6 @@ class Solution:
 
         def dfs(seq: str, depth: int):
             if seq:
-                print(f'Adding: {seq}')
                 seqs.add(seq)
             
             if depth == len(tiles):
