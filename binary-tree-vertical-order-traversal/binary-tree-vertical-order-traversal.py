@@ -13,13 +13,10 @@ class Solution:
         
         while q:
             node, column = q.popleft()
-            
+        
             if node:
-            
                 lookup[column].append(node.val)
 
-                if node.left:
-                    q.append((node.left, column - 1))
-                if node.right:
-                    q.append((node.right, column + 1))
-        return [lookup[key] for key in  sorted(lookup.keys())]
+                q.append((node.left, column - 1))
+                q.append((node.right, column + 1))
+        return [lookup[key] for key in sorted(lookup.keys())]
