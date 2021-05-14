@@ -1,10 +1,9 @@
 class Solution:
     def maxScore(self, cardPoints: List[int], k: int) -> int:
-        size = len(cardPoints) - k
-        minSubArraySum = curr = sum(cardPoints[:size])
-        
-        for i in range(len(cardPoints) - size):
-            curr += cardPoints[size + i] - cardPoints[i]
-            minSubArraySum = min(minSubArraySum, curr)
-            
-        return sum(cardPoints) - minSubArraySum
+        k_ = len(cardPoints)-k
+        total = sum(cardPoints[:k_])
+        minimum = total
+        for i in range(len(cardPoints)-k_):
+            total += cardPoints[i+k_] - cardPoints[i]
+            minimum = min(minimum, total)
+        return sum(cardPoints)-minimum
