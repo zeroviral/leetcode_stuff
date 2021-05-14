@@ -1,18 +1,17 @@
 class Solution:
     def canVisitAllRooms(self, rooms: List[List[int]]) -> bool:
+        targetRoom = len(rooms) - 1
         
-        visited = [0 for i in range(1000)]
+        visited = set()
         
-        def dfs(room, visited):
-            visited[room] = 1
-            
-            for key in rooms[room]:
-                if visited[key] == 0:
-                    dfs(key, visited)
-                
-        dfs(0, visited)
-        for i in range(len(rooms)):
-            if visited[i] == 0:
-                return False
-            
-        return True
+        
+        def dfs(node):
+            visited.add(node)
+
+            for key in rooms[node]:
+                if key not in visited:
+                    dfs(key)
+        
+        dfs(0)
+        
+        return len(visited) == len(rooms)
