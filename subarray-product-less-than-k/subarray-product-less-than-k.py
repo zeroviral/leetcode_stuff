@@ -8,10 +8,9 @@ class Solution:
             
             currProd *= nums[r]
             
-            while l <= r and currProd >= k:
+            while currProd >= k and l <= r:
                 currProd //= nums[l]
                 l += 1
             
-            if currProd < k:
-                count += r - l + 1
+            count += r - l + 1
         return count
