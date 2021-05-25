@@ -1,20 +1,32 @@
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
-        graph = collections.defaultdict(list)
-        indegree = {i:0 for i in range(numCourses)}
-        for course, prereq in prerequisites:
-            graph[prereq].append(course)
-            indegree[course] += 1
+        mapper = defaultdict(list)
         
-        sources = [course for course in indegree if indegree[course] == 0]  
-        ans = []
-        
-        while sources:
-            prereq = sources.pop()
-            ans.append(prereq)
-            for course in graph[prereq]:
-                indegree[course] -= 1
-                if indegree[course] == 0:
-                    sources.append(course)
-        
-        return len(ans) == numCourses
+        for secondtask, firsttask  in prerequisites:
+            mapper[secondtask].append(firsttask)
+			
+        track = set()
+		
+        def dfs (crs):
+            if crs in track:
+                return False
+            
+            if not mapper[crs]:
+                return True
+				
+            track.add(crs)
+			
+            for i in mapper[crs]:
+                
+                if not dfs(i): 
+                    return False
+					
+            mapper[crs]=[] 
+			
+            track.remove(crs)
+            return True 
+			
+        for i in range(numCourses):
+            if not dfs(i):
+                return False
+        return True 
