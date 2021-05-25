@@ -17,9 +17,11 @@ class Solution:
             if not root.left and not root.right:
                 ans.append(path + str(root.val))
                 return
+            
             path += str(root.val) + "->"
             dfs(root.left, path)
             dfs(root.right, path)
         
         dfs(root)
+        
         return ans
