@@ -14,9 +14,9 @@ class Solution:
             if parents[p1] >= parents[p2]:
                 parents[p2] = parents[p1]
                 pri[p1] += 1
-            else:
-                parents[p1] = parents[p2]
-                pri[p2] += 1
+            
+            parents[p1] = parents[p2]
+            pri[p2] += 1
             return True
         
         for edge in edges:
