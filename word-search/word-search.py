@@ -8,7 +8,7 @@ class Solution:
             if count == len(word):
                 return True
             
-            if i < 0 or i >= len(grid) or j < 0 or j >= len(grid[i]) or grid[i][j] != word[count]:
+            if i < 0 or i >= len(grid) or j < 0 or j >= len(grid[i]) or grid[i][j] != word[count] or grid[i][j] == "0":
                 return False
             
             temp = grid[i][j]
