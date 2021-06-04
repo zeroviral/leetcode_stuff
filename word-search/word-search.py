@@ -14,7 +14,9 @@ class Solution:
             temp = grid[i][j]
             grid[i][j] = "0"
             count += 1
-            found = dfs(grid, i+1, j, count, word) or dfs(grid, i-1, j, count, word) or dfs(grid, i, j+1, count, word) or dfs(grid, i, j-1, count, word)
+            found = 0
+            for row, col in [(i + 1, j), (i - 1, j), (i, j + 1), (i, j - 1)]:
+                found += dfs(grid, row, col, count, word)
             grid[i][j] = temp
             return found
         
