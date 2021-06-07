@@ -13,7 +13,6 @@ class Solution:
                 dfs(neighbor, path)
                 path.pop()
         
-        
         dfs(0, [0])
+        
         return ans
-            
